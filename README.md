@@ -17,3 +17,19 @@ Lab work for React The Complete Guide tutorial.
 
 [Refresher notes](js-refresher.md)    
 [Next generation JS summary](next-gen-js-summary.pdf)  
+
+### Build Workflow
+
+![build-workflow](images/build-workflow.png)
+
+
+### Installation
+
+```bash
+sudo npm install -g create-react-app 
+
+# cd into your working directory
+create-react-app your-app-name --scripts-version 1.1.5
+
+```
+
