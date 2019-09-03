@@ -33,3 +33,6 @@ create-react-app your-app-name --scripts-version 1.1.5
 
 ```
 
+### Components
+
+![Components and JSX Cheat Sheet](components.pdf)
