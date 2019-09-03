@@ -15,4 +15,5 @@ Lab work for React The Complete Guide tutorial.
 
 ### JS Refresher  
 
-[Refresher notes](js-refresher.md)  
+[Refresher notes](js-refresher.md)    
+[Next generation JS summary](next-gen-js-summary.pdf)  
