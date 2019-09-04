@@ -1,45 +1,58 @@
-import React, { Component } from 'react';
+// useState most important react hook,
+// allows us to manage states in functional component
+import React, { useState } from 'react';
 import './App.css';
 import Person from './Person/Person';
 
-class App extends Component {
+
+// converting class App to cont for functional component
+const app = (props) => {
+  // returns array with exacct two elements
+  // first element back is always the current state
+  // the second element is always the function that allow
+  // us to update the state and allow react to render/update
+
+  // array destructuring as way to save variable
+  const [ personsState, setPersonsState ] = useState({
+    persons: [
+      { name: 'Max', age: 28 },
+      { name: 'Manu', age: 29 },
+      { name: 'Stephanie', age: 26 }
+    ],
+    otherState: 'some other value'
+  });
+
+
+  console.log(personsState);
+
+  // function inside a function, normal in hooks
+  const switchNameHandler = () => {
+    // console.log('Was clicked!')
+    // DON't DO THIS: personsState.persons[0].name = 'React Guru';
+    setPersonsState({
+        persons: [
+        { name: 'Ann', age: 30 },
+        { name: 'Manu', age: 29 },
+        { name: 'Stephanie', age: 99 }
+      ],
+      // hooks does not automatically merge the the otherState into new personsState
+      // need to manually set it
+      otherState: personsState.otherState
+    });
+  };
+
+  return (
+    <div className="App">
+      <h1>Hi, I'm a React App </h1>
+      <p> This is really working! </p>
+      <button onClick={switchNameHandler}> Switch Name</button>
+      <Person name={personsState.persons[0].name} age={personsState.persons[0].age} ></Person>
+      <Person name={personsState.persons[1].name} age={personsState.persons[1].age} > My Hobbies: Racing</Person>
+      <Person name={personsState.persons[2].name} age={personsState.persons[0].age} />
+    </div>
+  );
   
-  // special property named state, managed inside the component
-  // only for class that extends component
-  state = {
-  	persons: [
-  		{ name: 'Max', age: 28 },
-  		{ name: 'Manu', age: 29 },
-  		{ name: 'Stephanie', age: 26 }
-  	],
-  	anotherState: 'some other value'
-  }
-
-  switchNameHandler = () => {
-  	console.log('Was clicked!')
-  	// DON't DO THIS: this.state.persons[0].name = 'React Guru';
-  	this.setState({
-	  		persons: [
-	  		{ name: 'Ann', age: 30 },
-	  		{ name: 'Manu', age: 29 },
-	  		{ name: 'Stephanie', age: 99 }
-  		]
-  	})
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <h1>Hi, I'm a React App </h1>
-        <p> This is really working. </p>
-        <button onClick={this.switchNameHandler}> Switch Name</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} ></Person>
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} > My Hobbies: Racing</Person>
-        <Person name={this.state.persons[2].name} age={this.state.persons[0].age} />
-      </div>
-    );
-    //return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does it work now?'));
-  }
 }
 
-export default App;
+export default app;
+
