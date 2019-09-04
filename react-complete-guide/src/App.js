@@ -18,12 +18,12 @@ const app = (props) => {
       { name: 'Max', age: 28 },
       { name: 'Manu', age: 29 },
       { name: 'Stephanie', age: 26 }
-    ],
-    otherState: 'some other value'
+    ]
   });
 
+  const [otherState, setOtherState] = useState('some other value');
 
-  console.log(personsState);
+  console.log(personsState, otherState);
 
   // function inside a function, normal in hooks
   const switchNameHandler = () => {
