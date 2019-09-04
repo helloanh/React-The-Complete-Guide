@@ -20,7 +20,7 @@ Lab work for React The Complete Guide tutorial.
 
 ### Build Workflow
 
-![build-workflow](images/build-workflow.png)
+[build-workflow](images/build-workflow.png)
 
 
 ### Installation
@@ -35,4 +35,38 @@ create-react-app your-app-name --scripts-version 1.1.5
 
 ### Components
 
-![Components and JSX Cheat Sheet](components.pdf)
+[Components and JSX Cheat Sheet](components.pdf)
+
+### Props and States
+
+Props and state are CORE concepts of React. Actually, only changes in props  and/ or state  trigger React to re-render your components and potentially update the DOM in the browser.  
+
+Props let you pass date from parent (wrapping component) to child (embedded) component.  
+
+```js
+// AllPosts Component:
+
+const posts = () => {
+	return (
+		<div>
+			<Post title="My First Post" />
+		</div>
+	);
+}
+
+// New Post Component
+
+class NewPost extends Component { // state can only be accessed in class-based components!
+    state = {
+        counter: 1
+    };  
+ 
+    render () { // Needs to be implemented in class-based components! Needs to return some JSX!
+        return (
+            <div>{this.state.counter}</div>
+        );
+    }
+}
+```
+
+[props and state pdf](props-state.pdf)
