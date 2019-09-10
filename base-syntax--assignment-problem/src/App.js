@@ -6,6 +6,14 @@ import UserOutput from './UserOutput/UserOutput';
 
 
 class App extends Component {
+  state = {
+    username: 'superAnn'
+  }
+
+  usernameChangeHandler = (event) => {
+    this.setState({username: event.target.value});
+  }
+
   render() {
     return (
       <div className="App">
@@ -22,8 +30,13 @@ class App extends Component {
           <li>Add styling of your choice to your components/ elements in the components - both with inline styles and stylesheets</li>
         </ol>
 
-        <UserInput />
-        <UserOutput />
+        <UserInput 
+          changed={this.usernameChangeHandler} 
+          currentName={this.state.username}
+        />
+
+        <UserOutput userName={this.state.username} />
+        <UserOutput userName="Ann" />
       </div>
     );
   }
