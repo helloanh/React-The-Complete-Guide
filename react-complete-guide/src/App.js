@@ -19,7 +19,9 @@ const app = (props) => {
       { name: 'Max', age: 28 },
       { name: 'Manu', age: 29 },
       { name: 'Stephanie', age: 26 }
-    ]
+    ],
+    otherState: 'some otherState value',
+    showPersons: false
   });
 
   const myStyle = {
@@ -31,32 +33,39 @@ const app = (props) => {
 
   const [otherState, setOtherState] = useState('some other value');
 
-  console.log(personsState, otherState);
+  //console.log(personsState, otherState);
 
-  // function inside a function, normal in hooks
-  const switchNameHandler = () => {
-    // console.log('Was clicked!')
-    // DON't DO THIS: personsState.persons[0].name = 'React Guru';
-    setPersonsState({
-        persons: [
-        { name: 'Ann', age: 30 },
-        { name: 'Manu', age: 29 },
-        { name: 'Stephanie', age: 99 }
-      ],
-      // hooks does not automatically merge the the otherState into new personsState
-      // need to manually set it
-      otherState: personsState.otherState
-    });
-  };
+  const togglePersonHandler = () => {
+    const doesShow = personsState.showPersons;
+    this.setState({show: !doesShow });
+  }
+
+  let persons = null;
+
+  if (personsState.showPersons) {
+    persons = (
+      <div>
+        { this.state.persons.map(person, index) => (
+            return <Person>
+        )}
+      )
+      </div>
+    );
+  }
 
   return (
     <div className="App">
       <h1>Hi, I'm a React App </h1>
       <p> This is really working! </p>
-      <button onClick={switchNameHandler} style={myStyle}> Switch Name</button>
-      <Person name={personsState.persons[0].name} age={personsState.persons[0].age} ></Person>
-      <Person name={personsState.persons[1].name} age={personsState.persons[1].age} > My Hobbies: Racing</Person>
-      <Person name={personsState.persons[2].name} age={personsState.persons[0].age} />
+      <button onClick={togglePersonHandler} style={myStyle}> Toggle</button>
+      { 
+        personsState.showPersons === true ?
+          <div>
+            <Person name={personsState.persons[0].name} age={personsState.persons[0].age} ></Person>
+            <Person name={personsState.persons[1].name} age={personsState.persons[1].age} > My Hobbies: Racing</Person>
+            <Person name={personsState.persons[2].name} age={personsState.persons[0].age} />
+          </div> : null 
+      }
     </div>
   );
   
